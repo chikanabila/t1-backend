@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Data Dari JSON</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        table, th, td {
+            border: 1px solid #161313;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #7FD975;
+        }
+    </style>
+</head>
+<body>
+    <h1>PROGRAM CHIKA NABILA</h1>
+    <h1>Data Dari JSON</h1>
+    <table>
+        <tr>
+            <th>Nama</th>
+            <th>Alamat</th>
+            <th>Pekerjaan</th>
+        </tr>
+    </table>
+
+    <script>
+        // Ambil data dari JSON (gantilah dengan cara sesuai)
+        fetch('/data_json') // Ganti dengan alamat file JSON yang sesuai
+            .then(response => response.json())
+            .then(data => {
+                data.forEach(item => {
+                    const table = document.querySelector('table');
+                    const row = document.createElement('tr');
+                    row.innerHTML = `<td>${item.nama}</td><td>${item.alamat}</td><td>${item.pekerjaan}</td>`;
+                    table.appendChild(row);
+                });
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    </script>
+</body>
+</html>
